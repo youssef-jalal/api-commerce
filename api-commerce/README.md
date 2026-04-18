@@ -1,45 +1,49 @@
-# API Commerce
+# API Commerce - TP REST API
 
-Mini API REST avec Node.js, Express.js et MongoDB pour gérer un système commercial.
+Mini API REST avec Node.js, Express.js et MongoDB pour système commercial.
 
-## Modules
+## Installation & Lancement
+```bash
+npm install
+# Configurer .env avec MONGO_URI
+npm start
+# ou npx nodemon server.js
+```
 
-- **Clients**: Gestion des informations clients (nom complet, email, téléphone, ville)
-- **Produits**: Gestion des articles (nom, catégorie, prix, quantité en stock)
-- **Commandes**: Gestion des achats (date, client, produits commandés, montant total)
+## Modules & Routes
 
-## Installation
+### Clients (`/api/clients`)
+- `POST /api/clients` - Créer client
+- `GET /api/clients` - Tous les clients
+- `GET /api/clients/:id` - Client spécifique
+- `PUT /api/clients/:id` - Modifier client
+- `DELETE /api/clients/:id` - Supprimer client
 
-1. Cloner le repository
-2. Installer les dépendances: `npm install`
-3. Configurer MongoDB et créer un fichier `.env` avec `MONGO_URI`
-4. Lancer le serveur: `npm start` ou `npx nodemon server.js`
+### Produits (`/api/products`)
+- `POST /api/products` - Créer produit
+- `GET /api/products` - Tous les produits
+- `GET /api/products/:id` - Produit spécifique
+- `PUT /api/products/:id` - Modifier produit
+- `DELETE /api/products/:id` - Supprimer produit
 
-## Routes API
+### Commandes (`/api/orders`)
+- `POST /api/orders` - Créer commande
+- `GET /api/orders` - Toutes les commandes
+- `GET /api/orders/:id` - Commande spécifique
+- `PUT /api/orders/:id` - Modifier commande
+- `DELETE /api/orders/:id` - Supprimer commande
 
-### Clients
-- `POST /api/clients` - Créer un client
-- `GET /api/clients` - Obtenir tous les clients
-- `GET /api/clients/:id` - Obtenir un client
-- `PUT /api/clients/:id` - Modifier un client
-- `DELETE /api/clients/:id` - Supprimer un client
+## Tests Postman
+Tester toutes les routes CRUD pour chaque module avec Postman.
 
-### Produits
-- `POST /api/products` - Créer un produit
-- `GET /api/products` - Obtenir tous les produits
-- `GET /api/products/:id` - Obtenir un produit
-- `PUT /api/products/:id` - Modifier un produit
-- `DELETE /api/products/:id` - Supprimer un produit
-
-### Commandes
-- `POST /api/orders` - Créer une commande
-- `GET /api/orders` - Obtenir toutes les commandes
-- `GET /api/orders/:id` - Obtenir une commande
-- `PUT /api/orders/:id` - Modifier une commande
-- `DELETE /api/orders/:id` - Supprimer une commande
+## Captures d'écran
+- Placer les screenshots Postman dans un dossier `screenshots/`
+- Inclure tests réussis et erreurs pour chaque route
 
 ## Structure MVC
-
-- `models/` - Modèles Mongoose
+- `models/` - Schémas Mongoose
 - `controllers/` - Logique métier
-- `routes/` - Définition des routes Express
+- `routes/` - Routes Express
+
+## Lien GitHub
+https://github.com/youssef-jalal/api-commerce.git
