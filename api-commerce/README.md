@@ -5,10 +5,36 @@ Mini API REST avec Node.js, Express.js et MongoDB pour système commercial.
 ## Installation & Lancement
 ```bash
 npm install
-# Configurer .env avec MONGO_URI
+# Configurer .env avec MONGO_URI et JWT_SECRET
 npm start
 # ou npx nodemon server.js
 ```
+
+## Authentification
+Toutes les routes API nécessitent une authentification JWT.
+
+### Inscription
+`POST /api/auth/register`
+```json
+{
+  "email": "admin@example.com",
+  "password": "password123",
+  "role": "admin"
+}
+```
+
+### Connexion
+`POST /api/auth/login`
+```json
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
+```
+**Réponse:** `{ "token": "jwt_token_here", "user": {...} }`
+
+### Utilisation du token
+Ajouter dans les headers: `Authorization: Bearer YOUR_JWT_TOKEN`
 
 ## Modules & Routes
 
@@ -34,7 +60,9 @@ npm start
 - `DELETE /api/orders/:id` - Supprimer commande
 
 ## Tests Postman
-Tester toutes les routes CRUD pour chaque module avec Postman.
+1. S'inscrire/Se connecter pour obtenir un token JWT
+2. Utiliser le token dans Authorization header pour toutes les autres requêtes
+3. Tester toutes les routes CRUD pour chaque module
 
 ## Captures d'écran
 - Placer les screenshots Postman dans un dossier `screenshots/`
@@ -44,6 +72,7 @@ Tester toutes les routes CRUD pour chaque module avec Postman.
 - `models/` - Schémas Mongoose
 - `controllers/` - Logique métier
 - `routes/` - Routes Express
+- `middleware/` - Authentification
 
 ## Lien GitHub
 https://github.com/youssef-jalal/api-commerce.git

@@ -10,13 +10,18 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+const authRoutes = require("./routes/authRoutes");
 const clientRoutes = require("./routes/clientRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 
-app.use("/api/clients", clientRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
+
+// Protected routes - require authentication
+const auth = require("./middleware/auth");
+app.use("/api/clients", auth, clientRoutes);
+app.use("/api/products", auth, productRoutes);
+app.use("/api/orders", auth, orderRoutes);
 
 // Test route
 app.get("/", (req, res) => {
